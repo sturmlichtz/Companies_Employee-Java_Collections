@@ -7,20 +7,22 @@ public class Employee_Wage_Computation {
 		int dailyWage=0;
 		final int isFullTime=1;
 		final int isPartTime=2;
-		int empCheck = (int)Math.floor(Math.random()*10)%3;
-		switch (empCheck) {
-		case isFullTime:
-			System.out.println("Employee is Present for full time");
-			dailyWage=(wagePerHour*fullDayHour);
-			System.out.println("daily wage is "+dailyWage);
-			break;
-		case isPartTime:
-			System.out.println("Employye is present for part time");
-			dailyWage=(wagePerHour*partTimeHour);
-			System.out.println("daily wage is "+dailyWage);
-		default:
-			System.out.println("Employee is absent");
-			break;
+		int currentDay=0;
+		int monthlyWage=0;
+		final int maxMonthDays=20;
+		for(currentDay=1;currentDay<=maxMonthDays;currentDay++) {
+			int empCheck = (int)Math.floor(Math.random()*10)%3;
+			switch (empCheck) {
+			case isFullTime:
+				dailyWage=(wagePerHour*fullDayHour);
+				break;
+			case isPartTime:
+				dailyWage=(wagePerHour*partTimeHour);
+			default:
+				break;
+			}
+			monthlyWage+=dailyWage;
 		}
+		System.out.println("Total monthly salary is :- "+monthlyWage);
 	}
 }
