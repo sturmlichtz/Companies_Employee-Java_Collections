@@ -9,15 +9,20 @@ public class Employee_Wage_Computation {
 		final int isPartTime=2;
 		int currentDay=0;
 		int monthlyWage=0;
+		int currentWorkingHours=0;
+		final int maxWorkingHours=100;		
 		final int maxMonthDays=20;
-		for(currentDay=1;currentDay<=maxMonthDays;currentDay++) {
+		while( currentWorkingHours<=maxWorkingHours || currentDay<=maxMonthDays) {
 			int empCheck = (int)Math.floor(Math.random()*10)%3;
+			currentDay++;
 			switch (empCheck) {
 			case isFullTime:
 				dailyWage=(wagePerHour*fullDayHour);
+				currentWorkingHours+=fullDayHour;
 				break;
 			case isPartTime:
 				dailyWage=(wagePerHour*partTimeHour);
+				currentWorkingHours+=partTimeHour;
 			default:
 				break;
 			}
