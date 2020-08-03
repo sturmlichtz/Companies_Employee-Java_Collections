@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Employee_Wage_Computation {
@@ -7,7 +8,8 @@ public class Employee_Wage_Computation {
 	final int partTimeHours=4;
 	final int fullTimeHours=8;
 	int noOfCompnay=0;
-	Set_Company_Info[] companyArray = new Set_Company_Info[2];	
+	Set_Company_Info[] companyArray = new Set_Company_Info[2];
+	HashMap<String, Set_Company_Info> eachCompanyWageMap = new HashMap<>();
 	private int emp_Random_Check() {
 		int empCheck=(int) Math.floor(Math.random()*10)%3;
 		return empCheck;
@@ -44,7 +46,8 @@ public class Employee_Wage_Computation {
 		}
 		return empWage;
 	}
-	int monthly_Wage(Set_Company_Info comapnayInfoRef) {
+	
+	int monthly_Wage(Set_Company_Info comapnayInfoRef) {	
 		int currentDay = 0;
 		int currentHour=0;
 		int monthlyWage = 0;
@@ -66,15 +69,23 @@ public class Employee_Wage_Computation {
 		return monthlyWage;
 	}
 	
-	public void add_Company_Info(String companyName, int empRatePerHour,int maxDays,int maxHours) {	
-		companyArray[noOfCompnay]= new Set_Company_Info(companyName,empRatePerHour,maxDays,maxHours);
+	public void add_Company_Info(String companyName, int empRatePerHour,int maxMonthDays,int maxMonthHours) {	
+		companyArray[noOfCompnay]= new Set_Company_Info(companyName,empRatePerHour,maxMonthDays,maxMonthHours);
+		Set_Company_Info companyInfoRef = new Set_Company_Info(companyName, empRatePerHour, maxMonthDays, maxMonthHours);
+		eachCompanyWageMap.put(companyName, companyInfoRef);
 		noOfCompnay++;
 	}
 	
-	private void display() {
+	public int getMonthlyWage(String company) {
+		return eachCompanyWageMap.get(company).empMonthlyWage;
+	}
+	
+	public void display() {
 		for (int i = 0; i < noOfCompnay; i++) {
 			int totawage = this.monthly_Wage(companyArray[i]);
-			System.out.println("Total Monthly Salary for "+companyArray[i].companyName+" is "+totawage);
+			Set_Company_Info companyInfoRef = companyArray[i];
+			companyInfoRef.Set_Emp_Wage(this.monthly_Wage(companyInfoRef));
+			System.out.println(companyInfoRef);
 	
 		}
 	}
