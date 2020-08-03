@@ -51,7 +51,7 @@ public class Employee_Wage_Computation {
 		int currentDay = 0;
 		int currentHour=0;
 		int monthlyWage = 0;
-		while (currentHour<=comapnayInfoRef.maxMonthHours && currentDay<=comapnayInfoRef.maxMonthDays) {
+		while (currentHour<=comapnayInfoRef.maxMonthHours || currentDay<=comapnayInfoRef.maxMonthDays) {
 			currentDay++;
 			switch (emp_Random_Check()) {
 			case isFullTime:
@@ -82,10 +82,11 @@ public class Employee_Wage_Computation {
 	
 	public void display() {
 		for (int i = 0; i < noOfCompnay; i++) {
-			int totawage = this.monthly_Wage(companyArray[i]);
 			Set_Company_Info companyInfoRef = companyArray[i];
 			companyInfoRef.Set_Emp_Wage(this.monthly_Wage(companyInfoRef));
 			System.out.println(companyInfoRef);
+			int totalwage = this.monthly_Wage(companyArray[i]);
+			System.out.println("Total Monthly Salary for "+companyArray[i].companyName+" is "+totalwage);
 	
 		}
 	}
@@ -94,7 +95,7 @@ public class Employee_Wage_Computation {
 		Employee_Wage_Computation employeeWageRef = new Employee_Wage_Computation();
 		employeeWageRef.welcome_message();
 		employeeWageRef.add_Company_Info("D-Mart", 20, 20, 100);
-		employeeWageRef.add_Company_Info("Reliance", 20, 20, 100);
+		employeeWageRef.add_Company_Info("Reliance", 25, 22, 150);
 		employeeWageRef.display();
 	}
 }
