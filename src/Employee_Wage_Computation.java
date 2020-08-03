@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Employee_Wage_Computation {
+public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 	Scanner sc = new Scanner(System.in);
 	final int isFullTime=1;
 	final int isPartTime=2;
@@ -10,7 +10,7 @@ public class Employee_Wage_Computation {
 	int noOfCompnay=0;
 	Set_Company_Info[] companyArray = new Set_Company_Info[2];
 	HashMap<String, Set_Company_Info> eachCompanyWageMap = new HashMap<>();
-	private int emp_Random_Check() {
+	public int emp_Random_Check() {
 		int empCheck=(int) Math.floor(Math.random()*10)%3;
 		return empCheck;
 	}
@@ -19,7 +19,7 @@ public class Employee_Wage_Computation {
 		System.out.println("Welcome to Employee Wage Computation Program");
 	}
 	
-	private void checkAttendence(){	
+	public void checkAttendence(){	
 		switch (emp_Random_Check()) {
 		case isFullTime:
 			System.out.println("Employee present for full time");	
@@ -32,7 +32,7 @@ public class Employee_Wage_Computation {
 			break;
 		}
 	}
-	private int daliy_Wage(Set_Company_Info comapnayInfoRef) {	
+	public int daliy_Wage(Set_Company_Info comapnayInfoRef) {
 		int empWage=0;
 		switch (emp_Random_Check()) {
 		case isFullTime:
@@ -47,7 +47,7 @@ public class Employee_Wage_Computation {
 		return empWage;
 	}
 	
-	int monthly_Wage(Set_Company_Info comapnayInfoRef) {	
+	public int monthly_Wage(Set_Company_Info comapnayInfoRef) {	
 		int currentDay = 0;
 		int currentHour=0;
 		int monthlyWage = 0;
@@ -98,4 +98,5 @@ public class Employee_Wage_Computation {
 		employeeWageRef.add_Company_Info("Reliance", 25, 22, 150);
 		employeeWageRef.display();
 	}
+
 }
