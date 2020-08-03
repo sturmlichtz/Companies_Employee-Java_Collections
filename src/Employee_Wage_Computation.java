@@ -85,8 +85,8 @@ public class Employee_Wage_Computation {
 			Set_Company_Info companyInfoRef = companyArray[i];
 			companyInfoRef.Set_Emp_Wage(this.monthly_Wage(companyInfoRef));
 			System.out.println(companyInfoRef);
-			int totalwage = this.monthly_Wage(companyArray[i]);
-			System.out.println("Total Monthly Salary for "+companyArray[i].companyName+" is "+totalwage);
+			//int totalwage = this.monthly_Wage(companyArray[i]);
+			//System.out.println("Total Monthly Salary for "+companyArray[i].companyName+" is "+totalwage);
 	
 		}
 	}
