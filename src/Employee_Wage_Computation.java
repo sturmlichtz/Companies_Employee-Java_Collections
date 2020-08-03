@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
+public class Employee_Wage_Computation implements Company_Emp_Wage_Interface,Emp_checkEmployee_Interface,Emp_Wage_Interface{
 	Scanner sc = new Scanner(System.in);
 	final int isFullTime=1;
 	final int isPartTime=2;
@@ -32,6 +32,7 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 			break;
 		}
 	}
+
 	public int daliy_Wage(Set_Company_Info comapnayInfoRef) {
 		int empWage=0;
 		switch (emp_Random_Check()) {
@@ -98,5 +99,7 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 		employeeWageRef.add_Company_Info("Reliance", 25, 22, 150);
 		employeeWageRef.display();
 	}
+
+
 
 }
