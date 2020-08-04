@@ -63,6 +63,7 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 		Employee_Wage_Computation employeeWageRef = new Employee_Wage_Computation();
 		employeeWageRef.welcome_message();
 		employeeWageRef.add_Company_Info("D-Mart", 10, 2, 8);
+		employeeWageRef.add_Company_Info("A-Mart", 10, 2, 12);
 		employeeWageRef.display();
 
 	}
