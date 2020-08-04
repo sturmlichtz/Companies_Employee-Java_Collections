@@ -84,8 +84,8 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 	public static void main(String[] args) {
 		Employee_Wage_Computation employeeWageRef = new Employee_Wage_Computation();
 		employeeWageRef.welcome_message();
-		employeeWageRef.add_Company_Info("D-Mart", 10, 2, 10);
-		employeeWageRef.add_Company_Info("A-Mart", 20, 2, 12);
+		employeeWageRef.add_Company_Info("TCS", 100, 20, 200);
+		employeeWageRef.add_Company_Info("Wipro", 120, 25, 210);
 		employeeWageRef.display();
 		employeeWageRef.totalWagePerCompany();
 
