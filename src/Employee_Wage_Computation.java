@@ -2,15 +2,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
+	Scanner scRef = new Scanner(System.in);
 	final int isFullTime=1;
 	final int isPartTime=2;
 	int working_Hours_In_Day=0;
 	int wageForDay=0;
 	int noOfCompnay=0;
 	ArrayList<Set_Company_Info> companyInfoList = new ArrayList<>();
+	HashMap<String, Set_Company_Info> companyInfoMap = new HashMap();
 	HashMap<Integer, Integer> dailyWagesMap = new HashMap();
 	public int emp_Random_Check() {
 		int empCheck=(int) Math.floor(Math.random()*10)%3;
@@ -52,30 +55,40 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 	public void add_Company_Info(String companyName, int empRatePerHour,int maxMonthDays,int maxMonthHours){
 		Set_Company_Info refForList =new Set_Company_Info(companyName, empRatePerHour, maxMonthDays, maxMonthHours);
 		companyInfoList.add(refForList);	
+		companyInfoMap.put(companyName, refForList);
 	}
-
-
+	
 	public void display() {
 		for (int i = 0; i < companyInfoList.size(); i++) {
-			Set_Company_Info companyArrayList = companyInfoList.get(i);
-			companyArrayList.Set_Emp_Wage(this.monthly_Wage(companyArrayList));
+			Set_Company_Info companyRef = companyInfoList.get(i);
+			companyRef.Set_Emp_Wage(this.monthly_Wage(companyRef));
 		    Set set = dailyWagesMap.entrySet();
 		    Iterator iterator = set.iterator();
 		    while(iterator.hasNext()) {
 		       Map.Entry mentry = (Map.Entry)iterator.next();
-		       System.out.println(" For Day "+ mentry.getKey() + " Salary was : "+mentry.getValue());
-		      }
-				
-			System.out.println("For "+companyArrayList.companyName+ " total monthly wages are :-"+companyArrayList.empMonthlyWage);
+		       System.out.println("For "+companyRef.companyName+" Day "+ mentry.getKey() + " Salary was : "+mentry.getValue());
+		      }		
+			//System.out.println("For "+companyRef.companyName+ " total monthly wages are :-"+companyRef.empMonthlyWage);
 		}
 	}
-
+	public int getTotalWage(String companyName) {
+		return companyInfoMap.get(companyName).empMonthlyWage;
+	}
+	
+	void totalWagePerCompany() {
+		System.out.println("Enter the name of company you want total Salary :-");
+		String userCompany = scRef.next();
+		System.out.println("Total Salary for :- "+userCompany+" is "+getTotalWage(userCompany));
+	}
+	
 	public static void main(String[] args) {
 		Employee_Wage_Computation employeeWageRef = new Employee_Wage_Computation();
 		employeeWageRef.welcome_message();
 		employeeWageRef.add_Company_Info("D-Mart", 10, 2, 10);
 		employeeWageRef.add_Company_Info("A-Mart", 20, 2, 12);
 		employeeWageRef.display();
+		employeeWageRef.totalWagePerCompany();
+
 	}
 
 }
