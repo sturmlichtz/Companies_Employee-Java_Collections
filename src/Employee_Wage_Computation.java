@@ -75,7 +75,7 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 		return companyInfoMap.get(companyName).empMonthlyWage;
 	}
 	
-	void totalWagePerCompany() {
+	public void totalWagePerCompany() {
 		System.out.println("Enter the name of company you want total Salary :-");
 		String userCompany = scRef.next();
 		System.out.println("Total Salary for :- "+userCompany+" is "+getTotalWage(userCompany));
