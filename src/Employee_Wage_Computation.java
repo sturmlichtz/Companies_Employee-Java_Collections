@@ -68,7 +68,6 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 				
 			System.out.println("For "+companyArrayList.companyName+ " total monthly wages are :-"+companyArrayList.empMonthlyWage);
 		}
-	
 	}
 
 	public static void main(String[] args) {
@@ -77,7 +76,6 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 		employeeWageRef.add_Company_Info("D-Mart", 10, 2, 10);
 		employeeWageRef.add_Company_Info("A-Mart", 20, 2, 12);
 		employeeWageRef.display();
-
 	}
 
 }
