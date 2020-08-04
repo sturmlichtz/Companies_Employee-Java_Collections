@@ -15,5 +15,6 @@ public class Set_Company_Info {
 	public void Set_Emp_Wage(int empMonthlyWage) {
 		this.empMonthlyWage=empMonthlyWage;
 	}
+	
 
 }
