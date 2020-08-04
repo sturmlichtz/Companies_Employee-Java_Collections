@@ -56,7 +56,6 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 			companyArrayList.Set_Emp_Wage(this.monthly_Wage(companyArrayList));
 			System.out.println(companyArrayList.companyName+ " :-"+companyArrayList.empMonthlyWage);
 		}
-	
 	}
 
 	public static void main(String[] args) {
@@ -64,7 +63,6 @@ public class Employee_Wage_Computation implements Company_Emp_Wage_Interface{
 		employeeWageRef.welcome_message();
 		employeeWageRef.add_Company_Info("D-Mart", 10, 2, 8);
 		employeeWageRef.display();
-
 	}
 
 }
